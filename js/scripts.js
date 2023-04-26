@@ -1,5 +1,3 @@
-// Custom Scripts
-// Custom scripts
 // Mobile burger
 function burgerMenu() {
     const burger = document.querySelector('.burger')
@@ -9,11 +7,9 @@ function burgerMenu() {
         if (!menu.classList.contains('active')) {
             menu.classList.add('active')
             burger.classList.add('active-burger')
-            // body.classList.add('locked')
         } else {
             menu.classList.remove('active')
             burger.classList.remove('active-burger')
-            // body.classList.remove('locked')
         }
     })
     // Breakpoint
@@ -21,29 +17,14 @@ function burgerMenu() {
         if (window.innerWidth > 991.98) {
             menu.classList.remove('active')
             burger.classList.remove('active-burger')
-            // body.classList.remove('locked')
         }
     })
 }
 burgerMenu()
 
-
-// Fixed menu
-function fixedNav() {
-    const nav = document.querySelector('nav')
-    const breakpoint = 1
-    if (window.scrollY >= breakpoint) {
-        nav.classList.add('fixed__nav')
-    } else {
-        nav.classList.remove('fixed__nav')
-    }
-}
-window.addEventListener('scroll', fixedNav)
-
-
-
-
 // Click counter
+const counterTotal = document.getElementById('counter-total')
+
 document.addEventListener('click', function chnageCount(evt) {
     let counterBtn = evt.target;
 
@@ -58,29 +39,26 @@ document.addEventListener('click', function chnageCount(evt) {
                 return counterInput.value;
             } else {
                 counterInput.value = Number(counterInput.value) + 1;
+                counterTotal.innerHTML = counterInput.value * 0.01 + ' ETH';
                 break;
             }
         case 'minus':
-            if (Number(counterInput.value) < 1) {
+            if (Number(counterInput.value) <= 1) {
                 return counterInput.value;
             } else {
                 counterInput.value = Number(counterInput.value) - 1;
+                counterTotal.innerHTML = counterInput.value * 0.01 + ' ETH';
                 break;
             }
         case 'max':
             counterInput.value = 9;
+            counterTotal.innerHTML = counterInput.value * 0.01 + ' ETH';
             break;
     }
 });
 
-
-
-
 // Swiper
 var swiper = new Swiper(".mySwiper", {
-    // slidesPerView: 3,
-    // spaceBetween: 30,
-    // slidesPerGroup: 3,
     breakpoints: {
         320: {
             slidesPerView: 1,
@@ -114,14 +92,7 @@ var swiper = new Swiper(".mySwiper", {
         el: ".swiper-pagination",
         clickable: true,
     },
-    // navigation: {
-    //     nextEl: ".swiper-button-next",
-    //     prevEl: ".swiper-button-prev",
-    // },
 });
-
-
-
 
 // Accordion
 function accordion() {
@@ -140,4 +111,4 @@ function accordion() {
         })
     })
 }
-accordion() 
+accordion()
